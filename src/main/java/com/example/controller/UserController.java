@@ -14,7 +14,7 @@ public class UserController {
     }
 
     @PostMapping
-    public String addUser(String username) {
+    public String addUser(@RequestHeader("token")String token, String username) {
         return username;
     }
 
