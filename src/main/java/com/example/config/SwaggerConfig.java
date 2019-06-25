@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
@@ -29,17 +28,15 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.example.controller"))
                 .build();*/
-        return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("用户")
-                .select().paths(PathSelectors.ant("/user")).build();
+        return new Docket(DocumentationType.SWAGGER_2);
     }
-    @Bean
+  /*  @Bean
     public Docket docketHello() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .groupName("你好")
                 .select().paths(PathSelectors.ant("/hello")).build();
 
-    }
+    }*/
 
     private ApiInfo apiInfo() {
         Contact contact = new Contact("王开译","aaa.com","823439163@qq.com");
