@@ -1,7 +1,10 @@
 package com.example.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -14,13 +17,19 @@ import java.util.ArrayList;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+    @Autowired
+    Environment environment;
     //配置docket以配置Swagger具体参数
     @Bean
     public Docket docket() {
+        Profiles profiles = Profiles.of("prod");
+        boolean isEnable = environment.acceptsProfiles(profiles);
         /*return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo());*/
         return new Docket(DocumentationType.SWAGGER_2)
+                .enable(!isEnable)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.controller")).build();
+                .apis(RequestHandlerSelectors.basePackage("com.example.controller"))
+                .build();
     }
 
     private ApiInfo apiInfo() {
