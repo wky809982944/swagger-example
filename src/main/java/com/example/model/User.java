@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class User {
-    @ApiModelProperty("用户名")
+    @ApiModelProperty(value ="用户名")
     private String username;
     @ApiModelProperty("年龄")
     private int age;

@@ -14,7 +14,7 @@ public class UserController {
     @ApiOperation("获取用户信息")
     @ApiImplicitParams(
             {
-                    @ApiImplicitParam(name = "username", value = "用户名", dataType = "int", paramType = "header", defaultValue = "zhangsan", example = "lisi"),
+                    @ApiImplicitParam(name = "username", value = "用户名", dataType = "String", paramType = "header", defaultValue = "zhangsan", example = "lisi"),
                     @ApiImplicitParam(name = "password", value = "用户名", dataType = "int", paramType = "header", defaultValue = "zhangsan", example = "lisi")
             }
     )
